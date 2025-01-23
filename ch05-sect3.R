@@ -63,17 +63,18 @@ diff(c(10, 100))
 
 # code 5-08
 str(cars)
+disc
 head(cars)
-
+str(dev.off())
 dist <- cars[,2]                      # 자동차 제동거리
 hist(dist,                            # 자료(data)
      main="Histogram for 제동거리",   # 제목
      xlab ="제동거리",                # x축 레이블
      ylab="빈도수",                   # y축 레이블
-     border="blue",                   # 막대 테두리색
-     col="green",                     # 막대 색
+     border="magenta",                   # 막대 테두리색
+     col="cyan",                     # 막대 색
      las=2,                           # x축 글씨 방향(0~3)
-     breaks=2)                        # 막대 개수 조절
+     breaks=30)                        # 막대 개수 조절
 
 hist(dist,                            # 자료(data)
      main="Histogram for 제동거리",   # 제목
@@ -90,7 +91,7 @@ hist(dist,                            # 자료(data)
      ylab="빈도수",                   # y축 레이블
      border="blue",                   # 막대 테두리색
      col="green",                     # 막대 색
-     las=2,                           # x축 글씨 방향(0~3)
+     las=1,                           # x축 글씨 방향(0~3)
      breaks=4)                        # 막대 개수 조절
 
 hist(dist,                            # 자료(data)
@@ -103,7 +104,8 @@ hist(dist,                            # 자료(data)
      breaks=5)                        # 막대 개수 조절
 
 #######################################################
-par(mfrow=c(2,2))
+par(mfrow=c(3,3))
+
 hist(dist,                            # 자료(data)
      main="Histogram for 제동거리",   # 제목
      xlab ="제동거리",                # x축 레이블
@@ -128,6 +130,7 @@ hist(dist,                            # 자료(data)
      col="green",                     # 막대 색
      las=2,                           # x축 글씨 방향(0~3)
      breaks=5)                        # 막대 개수 조절
+
 hist(dist,                            # 자료(data)
      main="Histogram for 제동거리",   # 제목
      xlab ="제동거리",                # x축 레이블
@@ -142,11 +145,13 @@ par(mfrow=c(1,1))
 # code 5-09
 dist <- cars[,2]    # 자동차 제동거리(단위: 피트)
 boxplot(dist, main="자동차 제동거리")
-
+str(boxplot)
 # code 5-10
-boxplot.stats(dist)
-
+boxst <- boxplot.stats(dist)
+str(boxst)
 boxplot.stats(dist)$stats
+boxplot.stats(dist)$conf
+
 # $stats
 # c이 값은 박스 플롯의 주요 통계치를 나타내며, 
 # 다섯 개의 숫자 요약 (Five Number Summary)이라고 불립니다. 
@@ -170,11 +175,14 @@ boxplot.stats(dist)$conf
 
 # code 5-11
 boxplot(Petal.Length~Species, data=iris, main="품종별 꽃잎의 길이")
-
 boxplot(Petal.Width~Species, data=iris, main="품종별 꽃잎의 너비")
 boxplot(Petal.Width~Species, data=iris, main="품종별 꽃잎의 너비", las=1)
-
+boxplot(Sepal.Width~Species, data=iris, main="품종별 꽃받침의 길이")
+par(mfrow=c(1,3))
 # stop 201
+mtcars
+str(mtcars)
+summary(mtcars)
 par(mfrow=c(1,3))
 barplot(table(mtcars$carb), 
         main="Barplot of Carburetors",
@@ -193,6 +201,50 @@ barplot(table(mtcars$gear),
         col="green")
 par(mfrow=c(1,1)) # 해제
 
+########################
 
+par(mfrow=c(1,3))
+barplot(table(mtcars$hp), 
+        main="Barplot of Carburetors",
+        xlab="#of carburetors",  
+        ylab="frequency",
+        col="blue")
+barplot(table(mtcars$cyl), 
+        main="Barplot of Cylender",
+        xlab="#of cylender",  
+        ylab="frequency",
+        col="red")
+barplot(table(mtcars$vs), 
+        main="Barplot of Grar",
+        xlab="#of gears",  
+        ylab="frequency",
+        col="green")
 
-
+par(mfrow=c(1,1))
+######################
+par(mfrow=c(1,3))
+hist(mtcars$mpg,                            # 자료(data)
+     main="Histogram for 연비",   # 제목
+     xlab ="연비",                # x축 레이블
+     ylab="빈도수",                   # y축 레이블
+     border="orange",                   # 막대 테두리색
+     col="pink",                     # 막대 색
+     las=0,                           # x축 글씨 방향(0~3)
+     breaks=5)                        # 막대 개수 조절
+hist(mtcars$hp,                            # 자료(data)
+     main="Histogram for 출력",   # 제목
+     xlab ="출력",                # x축 레이블
+     ylab="빈도수",                   # y축 레이블
+     border="red",                   # 막대 테두리색
+     col="yellow",                     # 막대 색
+     las=1,                           # x축 글씨 방향(0~3)
+     breaks=5)                        # 막대 개수 조절
+hist(mtcars$carb,                            # 자료(data)
+     main="Histogram for 카뷰레터 수",   # 제목
+     xlab ="카뷰레터",                # x축 레이블
+     ylab="빈도수",                   # y축 레이블
+     border="green",                   # 막대 테두리색
+     col="blue",                     # 막대 색
+     las=2,                           # x축 글씨 방향(0~3)
+     breaks=5)                        # 막대 개수 조절
+par(mfrow=c(1,1))
